@@ -1,0 +1,110 @@
+body { 
+  background-color: #ffffff; 
+  color: #666666; 
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+  background-image: url('Licking Mug1');
+  background-position: right;
+  background-repeat: no-repeat;
+  line-height: 400%;
+  text-indent: 1em;
+  transition: background-image 0.5s ease-in-out;
+}
+
+nav {
+  font-weight: bold;
+  font-size: 16px;
+  transition: font-size 0.5s ease-in-out;
+}
+
+nav a {
+  text-decoration: none;
+}
+
+/* On hover, change the background image and nav font size */
+header:hover {
+  background-image: url('New Header Image');
+}
+
+nav:hover {
+  font-size: 20px;
+}
+
+}
+
+h1 {
+  font-family: Georgia, Times New Roman, serif;
+  margin-bottom: 0;
+}
+
+h2 {
+  font-family: Georgia, Times New Roman, serif;
+}
+
+h3 {
+  font-family: Georgia, Times New Roman, serif;
+  color: #000033;
+}
+
+ul {
+  list-style-image: url('Dog meme2.gif');
+}
+
+footer {
+  font-size: 75%;
+  font-style: italic;
+  text-align: center;
+  font-family: Georgia, Times New Roman, serif;
+}
+
+.resort {
+  font-weight: bold;
+}
+
+#contact {
+  font-size: 90%;
+}
+
+@media (max-width: 767px) {
+  body {
+    flex-direction: column;
+  }
+  
+  .left-column,
+  .right-column {
+    width: 100%;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  body {
+    flex-direction: row;
+  }
+  
+  .left-column {
+    width: 70%;
+  }
+  
+  .right-column {
+    width: 30%;
+  }
+}
+
+@media (min-width: 992px) {
+  body {
+    flex-direction: row;
+  }
+  
+  .left-column {
+    width: 50%;
+  }
+  
+  .right-column {
+    width: 50%;
+  }
+}

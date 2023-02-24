@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Dogs & Cats!</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="DG3.css">
+  <style>
+    /* Add styling for two-column layout */
+    .column {
+      float: left;
+      width: 50%;
+    }
+	 </style>
+</head>
+<body>
+  <header>
+    <h1>Dogs and Cats!</h1>
+  </header>
+  <nav>
+    <div id="nav">
+      <a href="Home.html">Home</a> &nbsp;
+      <a href="dogs.html">Dogs</a> &nbsp;
+      <a href="cats.html">Cats</a> &nbsp;
+      <a href="Reservations.html">Reservations</a> &nbsp;   
+    </div>
+  </nav> 
+  <div>
+    <img src="Check mate5.jpg" alt="Check mate5" height="400" width="600">
+  </div>
+  <h2>Watch dogs and cats play together</h2>
+  <p>This is basically a Dog park where your cat is invited. We have areas that will separate the two and areas where they can play together. There is also a few activities for the pet parents to have fun together as well.</p>
+  <div class="row">
+    <div class="column">
+      <h3>Activities:</h3>
+	       <video controls>
+        <source src="cats-and-dogs.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <ol>
+        <li>Get a pet smoothie at the bar</li>
+        <li>Family friendly snacks are on hand</li>
+        <li>Family portrait backgrounds available</li>
+      </ol>
+    </div>
+    <div class="column">
+      <h3>Facilities:</h3>
+      <ul>
+        <li>Family fun and pet pools</li>
+        <li>Take a look at our menu</li>
+      </ul>
+    </div>
+  </div>
+  <div>
+    <p>Dogs & Cats!</p>
+    <p>123 Pet Lane</p>
+    <p>St. Marys, GA 31558</p>
+    <p>706-555-5555</p>
+  </div>
+  <div>
+    <p>Copyright &copy; 2022 Pacific Trails Resort</p> 
+    <a href="mailto:catdaddy@gmail.com">catdaddy@gmail.com</a>
+  </div>
+  <br><br>
+  <div>
+    <h2>Reservation Form:</h2>
+    <form action="reservation.php" method="post">
+      <p>Name: <input type="text" name="name" required></p>
+      <p>Email: <input type="email" name="email" required></p>
+      <p>Phone: <input type="tel" name="phone" required></p>
+<p>Number of dogs: <input type="number" name="dogs" required></p>
+<p>Number of cats: <input type="number" name="cats" required></p>
+<p>Date of visit: <input type="date" name="date" required></p>
+<p>Time of visit: <input type="time" name="time" required></p>
+<p><input type="submit" value="Submit"></p>
+</form>
+
+  </div>
+</body>
+</html>
+<!-- PHP Code to process form data -->
+<?php
+  if(isset($_POST['submit'])) {
+    $email = $_POST['email'];
+    $phone = $_POST['phone'];
+    $dogs = $_POST['dogs'];
+    $cats = $_POST['cats'];
+    $date = $_POST['date'];
+    $time = $_POST['time'];
+
+    // Insert the reservation data into the database
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "reservation_data";
+
+    // Create connection
+    $conn = mysqli_connect($servername, $username, $password, $dbname);
+
+    // Check connection
+    if (!$conn) {
+      die("Connection failed: " . mysqli_connect_error());
+    }
+    echo "Connected successfully";
+
+    $sql = "INSERT INTO reservation_info (email, phone, dogs, cats, date, time)
+    VALUES ('$email', '$phone', '$dogs', '$cats', '$date', '$time')";
+
+    if (mysqli_query($conn, $sql)) {
+      echo "New record created successfully";
+    } else {
+      echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+    }
+
+    mysqli_close($conn);
+  }
+?>
+
+
